@@ -11,8 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+The purpose of this package is to displays a stacked list of users. This widget is usually used when sharing who has access to a specific view or file, or when assigning tasks to someone in a workflow
 
 ## Features
 

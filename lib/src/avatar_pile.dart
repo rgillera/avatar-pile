@@ -5,12 +5,14 @@ class AvatarPile extends StatelessWidget {
   const AvatarPile({
     Key? key,
     required this.users,
-    this.radius = 22.0,
-    this.padding = 3.0,
+    this.imageWidth = IMAGE_WIDTH,
+    this.imageHeight = IMAGE_HEIGHT,
+    this.padding = IMAGE_PADDING,
   }) : super(key: key);
 
   final List<UserAvatar> users;
-  final double radius;
+  final double imageWidth;
+  final double imageHeight;
   final double padding;
 
   @override
@@ -26,20 +28,12 @@ class AvatarPile extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(padding),
                 child: AvatarCircle(
-                  radius: radius,
+                  imageWidth: imageWidth,
+                  imageHeight: imageHeight,
                   imageUrl: users[index].imageUrl.toString(),
                 ),
               ),
-              SizedBox(
-                width: 80,
-                child: Center(
-                  child: Text(
-                    users[index].username.toString(),
-                    maxLines: 1,
-                    style: const TextStyle(fontSize: 12.0, color: Colors.white),
-                  ),
-                ),
-              ),
+              _displayName(users[index].name),
             ],
           ),
         ),
@@ -49,5 +43,22 @@ class AvatarPile extends StatelessWidget {
     return Wrap(
       children: avatarWidget,
     );
+  }
+
+  Widget _displayName(name) {
+    if (name != '') {
+      return SizedBox(
+        width: 80,
+        child: Center(
+          child: Text(
+            name.toString(),
+            maxLines: 1,
+            style: const TextStyle(fontSize: 12.0, color: Colors.white),
+          ),
+        ),
+      );
+    } else {
+      return const SizedBox.shrink();
+    }
   }
 }

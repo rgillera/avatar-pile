@@ -1,33 +1,33 @@
 import 'dart:convert';
 
 class UserAvatar {
-  final String username;
+  final String name;
   final String imageUrl;
   UserAvatar({
-    this.username = '',
+    this.name = '',
     required this.imageUrl,
   });
 
   UserAvatar copyWith({
-    String? username,
+    String? name,
     String? imageUrl,
   }) {
     return UserAvatar(
-      username: username ?? this.username,
+      name: name ?? this.name,
       imageUrl: imageUrl ?? this.imageUrl,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'username': username,
+      'name': name,
       'imageUrl': imageUrl,
     };
   }
 
   factory UserAvatar.fromMap(Map<String, dynamic> map) {
     return UserAvatar(
-      username: map['username'] ?? '',
+      name: map['name'] ?? '',
       imageUrl: map['imageUrl'] ?? '',
     );
   }
@@ -38,17 +38,17 @@ class UserAvatar {
       UserAvatar.fromMap(json.decode(source));
 
   @override
-  String toString() => 'UserAvatar(username: $username, imageUrl: $imageUrl)';
+  String toString() => 'UserAvatar(name: $name, imageUrl: $imageUrl)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
     return other is UserAvatar &&
-        other.username == username &&
+        other.name == name &&
         other.imageUrl == imageUrl;
   }
 
   @override
-  int get hashCode => username.hashCode ^ imageUrl.hashCode;
+  int get hashCode => name.hashCode ^ imageUrl.hashCode;
 }
